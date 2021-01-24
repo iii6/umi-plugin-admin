@@ -103,7 +103,6 @@ const BasicLayout = (props: any) => {
 
   return (
     <ProLayout
-      {...layoutRestProps}
       route={route}
       location={location}
       title={userConfig.name || userConfig.title}
@@ -132,6 +131,7 @@ const BasicLayout = (props: any) => {
       disableContentMargin
       fixSiderbar
       fixedHeader
+      {...layoutRestProps}
       rightContentRender={
         // === false 应该关闭这个功能
         layoutRestProps?.rightContentRender !== false &&
