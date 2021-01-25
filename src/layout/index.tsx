@@ -116,7 +116,11 @@ const BasicLayout = (props: any) => {
       }}
       menu={{ locale: userConfig.locale }}
       // 支持了一个 patchMenus，其实应该用 menuDataRender
-      menuDataRender={() => loopMenuItem(initialState.menuData)}
+      menuDataRender={
+        userConfig.patchMenus
+          ? menuData => userConfig.patchMenus(menuData, initialInfo)
+          : undefined
+      }
       formatMessage={userConfig.formatMessage}
       logo={logo}
       menuItemRender={(menuItemProps, defaultDom) => {
