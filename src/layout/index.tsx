@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore
-import { Link, useModel, history, formatMessage } from 'umi';
+import { Link, useModel, history } from 'umi';
 import ProLayout, { BasicLayoutProps } from '@ant-design/pro-layout';
 import './style.less';
 import renderRightContent from './renderRightContent';
@@ -8,21 +8,6 @@ import { WithExceptionOpChildren } from '../component/Exception';
 import { getMatchMenu, MenuDataItem, transformRoute } from '@umijs/route-utils';
 // @ts-ignore
 import logo from '../component/logo';
-// @ts-ignore
-import allIcons from '../../icon';
-
-function toHump(name: string) {
-  return name.replace(/\-(\w)/g, function(all, letter) {
-    return letter.toUpperCase();
-  });
-}
-
-const loopMenuItem = (menus: MenuDataItem[]): MenuDataItem[] =>
-  menus.map(({ icon, children, ...item }) => ({
-    ...item,
-    icon: icon && allIcons[toHump(icon.replace(icon[0], icon[0].toUpperCase())) as string],
-    children: children && loopMenuItem(children),
-  }));
 
 const getLayoutRender = (currentPathConfig: {
   layout:
